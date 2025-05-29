@@ -1,0 +1,752 @@
+/*=============== SHOP HERO ===============*/
+.shop-hero {
+    background: linear-gradient(135deg, 
+      var(--first-color) 0%, 
+      hsl(31, 90%, 75%) 30%,
+      hsl(31, 80%, 65%) 60%,
+      hsl(200, 50%, 40%) 100%);
+    padding: 10rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .shop-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    animation: backgroundFloat 20s ease-in-out infinite;
+  }
+  
+  .shop-hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg at 50% 50%, 
+      rgba(255,255,255,0.1) 0deg, 
+      transparent 60deg, 
+      rgba(255,255,255,0.05) 120deg, 
+      transparent 180deg);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+  }
+  
+  .shop-hero__container {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .shop-hero__data {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .shop-hero__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-bold);
+    color: #fff;
+    margin-bottom: var(--mb-1-5);
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .shop-hero__description {
+    font-size: var(--h3-font-size);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.3s both;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /*=============== SHOP FILTERS ===============*/
+  .shop-filters {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, 
+      var(--container-color) 0%, 
+      rgba(var(--first-color-rgb), 0.02) 100%);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+  }
+  
+  .shop-filters::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--first-color) 50%, 
+      transparent 100%);
+  }
+  
+  .shop-filters__container {
+    display: grid;
+    gap: 2.5rem;
+  }
+  
+  .shop-filters__title {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+    margin-bottom: var(--mb-1);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .shop-filters__title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--first-color), transparent);
+    border-radius: 2px;
+  }
+  
+  .shop-filters__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: var(--mb-2);
+  }
+  
+  .shop-filter__btn {
+    background: var(--container-color);
+    color: var(--text-color);
+    border: 2px solid transparent;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: var(--font-medium);
+    font-size: var(--normal-font-size);
+    cursor: pointer;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .shop-filter__btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(var(--first-color-rgb), 0.3) 50%, 
+      transparent 100%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .shop-filter__btn:hover::before {
+    left: 100%;
+  }
+  
+  .shop-filter__btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.15),
+      0 0 0 1px var(--first-color);
+    color: var(--first-color);
+    background: rgba(var(--first-color-rgb), 0.05);
+  }
+  
+  .shop-filter__btn.active {
+    background: linear-gradient(135deg, var(--first-color) 0%, hsl(31, 90%, 60%) 100%);
+    color: #fff;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 12px 40px rgba(var(--first-color-rgb), 0.4),
+      0 0 0 1px var(--first-color);
+  }
+  
+  .shop-filters__sort {
+    justify-self: end;
+  }
+  
+  .shop-sort__select {
+    background: var(--container-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all .3s ease;
+    min-width: 220px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .shop-sort__select:focus {
+    outline: none;
+    border-color: var(--first-color);
+    box-shadow: 
+      0 0 0 4px rgba(var(--first-color-rgb), 0.1),
+      0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+  
+  /*=============== SHOP PRODUCTS ===============*/
+  .shop {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, 
+      transparent 0%, 
+      rgba(var(--first-color-rgb), 0.01) 50%, 
+      transparent 100%);
+  }
+  
+  .shop__container {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-bottom: var(--mb-3);
+  }
+  
+  .shop__card {
+    background: var(--container-color);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+  }
+  
+  .shop__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      rgba(var(--first-color-rgb), 0.05) 0%, 
+      transparent 30%,
+      rgba(var(--first-color-rgb), 0.02) 70%,
+      transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .shop__card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      var(--first-color), 
+      hsl(31, 80%, 65%), 
+      var(--first-color));
+    border-radius: 24px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+  }
+  
+  .shop__card:hover::before {
+    opacity: 1;
+  }
+  
+  .shop__card:hover::after {
+    opacity: 1;
+  }
+  
+  .shop__card:hover {
+    transform: translateY(-12px) rotateX(5deg);
+    box-shadow: 
+      0 25px 60px rgba(0, 0, 0, 0.15),
+      0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+  }
+  
+  .shop__tag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--first-color);
+    color: #fff;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-bold);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(var(--first-color-rgb), 0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .shop__tag.sale {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  }
+  
+  .shop__tag.new {
+    background: linear-gradient(135deg, #4ecdc4 0%, #26a69a 100%);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  }
+  
+  .shop__img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain; /* Changed from 'cover' to 'contain' to show full image */
+    object-position: center; /* Centers the image */
+    border-radius: 16px;
+    margin-bottom: var(--mb-2);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    background: var(--container-color); /* Adds background color for padding areas */
+  }
+  
+  /* Optional: Reduce or remove the hover zoom effect */
+  .shop__card:hover .shop__img {
+    transform: scale(1.02) rotate(1deg); /* Reduced from scale(1.08) to scale(1.02) */
+    border-radius: 20px;
+  }
+  
+  .shop__card:hover .shop__img {
+    transform: scale(1.08) rotate(2deg);
+    border-radius: 20px;
+  }
+  
+  .shop__data {
+    text-align: center;
+    margin-bottom: var(--mb-2);
+  }
+  
+  .shop__title {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+    margin-bottom: var(--mb-0-75);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+  
+  .shop__card:hover .shop__title {
+    color: var(--first-color);
+    transform: translateY(-2px);
+  }
+  
+  .shop__price {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-bold);
+    background: linear-gradient(135deg, var(--first-color) 0%, hsl(31, 90%, 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: var(--mb-1);
+  }
+  
+  .shop__rating {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: var(--mb-1-5);
+  }
+  
+  .shop__rating i {
+    font-size: 1.2rem;
+    color: #ffd700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+  }
+  
+  .shop__card:hover .shop__rating i {
+    transform: scale(1.15) rotate(10deg);
+  }
+  
+  .shop__button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--first-color) 0%, hsl(31, 90%, 60%) 100%);
+    color: #fff;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    border-radius: 16px;
+    font-weight: var(--font-bold);
+    font-size: var(--normal-font-size);
+    cursor: pointer;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 
+      0 8px 25px rgba(var(--first-color-rgb), 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  .shop__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255,255,255,0.3) 50%, 
+      transparent 100%);
+    transition: left 0.6s ease;
+  }
+  
+  .shop__button:hover::before {
+    left: 100%;
+  }
+  
+  .shop__button:hover {
+    background: linear-gradient(135deg, hsl(31, 90%, 60%) 0%, var(--first-color) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 15px 40px rgba(var(--first-color-rgb), 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .shop__button:active {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  /*=============== SHOP PAGINATION ===============*/
+  .shop__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: var(--mb-3);
+  }
+  
+  .shop__pagination-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--container-color);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .shop__pagination-btn:hover {
+    background: linear-gradient(135deg, var(--first-color) 0%, hsl(31, 90%, 60%) 100%);
+    color: #fff;
+    border-color: var(--first-color);
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 12px 30px rgba(var(--first-color-rgb), 0.3);
+  }
+  
+  .shop__pagination-btn.active {
+    background: linear-gradient(135deg, var(--first-color) 0%, hsl(31, 90%, 60%) 100%);
+    color: #fff;
+    border-color: var(--first-color);
+    box-shadow: 0 8px 25px rgba(var(--first-color-rgb), 0.4);
+    transform: scale(1.1);
+  }
+  
+  /*=============== ANIMATIONS ===============*/
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 15px rgba(var(--first-color-rgb), 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(var(--first-color-rgb), 0.5);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes backgroundFloat {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.02);
+    }
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /*=============== RESPONSIVE DESIGN ===============*/
+  /* For large devices */
+  @media screen and (max-width: 1200px) {
+    .shop__container {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+  }
+  
+  /* For medium devices */
+  @media screen and (max-width: 968px) {
+    .shop-hero {
+      padding: 8rem 0 4rem;
+    }
+    
+    .shop-hero__title {
+      font-size: 2.5rem;
+    }
+    
+    .shop-filters__container {
+      gap: var(--mb-2);
+    }
+    
+    .shop-filters__buttons {
+      justify-content: center;
+    }
+    
+    .shop-filters__sort {
+      justify-self: center;
+    }
+    
+    .shop-sort__select {
+      min-width: 100%;
+    }
+    
+    .shop__container {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    
+    .shop__card {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* For small devices */
+  @media screen and (max-width: 576px) {
+    .shop-hero {
+      padding: 6rem 0 3rem;
+      min-height: 50vh;
+    }
+    
+    .shop-hero__data {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+    
+    .shop-hero__title {
+      font-size: 2rem;
+    }
+    
+    .shop-hero__description {
+      font-size: var(--normal-font-size);
+    }
+    
+    .shop-filters__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .shop-filter__btn {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+    
+    .shop__container {
+      grid-template-columns: 1fr;
+      gap: var(--mb-2);
+    }
+    
+    .shop__card {
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+    
+    .shop__img {
+      height: 200px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .shop__container {
+      grid-template-columns: 1fr;
+      gap: var(--mb-1-5);
+    }
+    
+    .shop__card {
+      padding: 1.25rem;
+    }
+  }
+  
+  /*=============== DARK THEME ADJUSTMENTS ===============*/
+  body.dark-theme .shop-filters {
+    background: linear-gradient(135deg, 
+      var(--body-color) 0%, 
+      rgba(var(--first-color-rgb), 0.03) 100%);
+  }
+  
+  body.dark-theme .shop__card {
+    background: var(--container-color);
+    border-color: var(--border-color);
+    box-shadow: 
+      0 8px 40px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  body.dark-theme .shop__card:hover {
+    box-shadow: 
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  /*=============== LOADING STATES ===============*/
+  .shop__card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  
+  .shop__card.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid var(--first-color);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /*=============== ACCESSIBILITY ===============*/
+  .shop-filter__btn:focus,
+  .shop-sort__select:focus,
+  .shop__button:focus,
+  .shop__pagination-btn:focus {
+    outline: 3px solid var(--first-color);
+    outline-offset: 3px;
+  }
+  
+  /*=============== HOVER EFFECTS FOR DESKTOP ===============*/
+  @media (hover: hover) and (pointer: fine) {
+    .shop__card {
+      transform-origin: center;
+      perspective: 1000px;
+    }
+    
+    .shop__card:hover .shop__img {
+      transform: scale(1.08) rotateY(5deg);
+    }
+    
+    .shop__rating i:hover {
+      transform: scale(1.3) rotate(20deg);
+      color: #ffed4e;
+      filter: drop-shadow(0 4px 8px rgba(255, 237, 78, 0.5));
+    }
+  }
+  
+  /*=============== PRINT STYLES ===============*/
+  @media print {
+    .shop-hero,
+    .shop-filters,
+    .shop__pagination {
+      display: none;
+    }
+    
+    .shop__card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ccc;
+      transform: none !important;
+    }
+  }
+  
+  /*=============== CUSTOM SCROLLBAR ===============*/
+  .shop::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .shop::-webkit-scrollbar-track {
+    background: var(--container-color);
+    border-radius: 10px;
+  }
+  
+  .shop::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--first-color), hsl(31, 80%, 65%));
+    border-radius: 10px;
+  }
+  
+  .shop::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(31, 80%, 65%), var(--first-color));
+  }
